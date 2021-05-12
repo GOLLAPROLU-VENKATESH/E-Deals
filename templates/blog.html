@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+{% load static %}
+{% block content %}
+
+{% for blog in vblog %}
+
+
+
+<div class="container-md mx-auto mt-3">
+
+
+    <div class="card text-center">
+  <div class="card-header">
+    <h3 class="card-title">{{blog.heading}}</h3>
+  </div>
+  <div class="card-body">
+      <strong><p class="card-text mb-auto">{{blog.subheading1}}</p></strong>
+      <p class="card-text mb-auto">{{blog.para1}}</p>
+      <img src="{{blog.img_2.url}}" class="card-img-top" alt="..." >
+      <strong><p class="card-text mb-auto">{{blog.subheading2}}</p></strong>
+      <p class="card-text mb-auto">{{blog.para2}}</p>
+      <strong><p class="card-text mb-auto">{{blog.subheading3}}</p></strong>
+      <p class="card-text mb-auto">{{blog.para3}}</p>
+
+
+<iframe width="1000" height="600" src="{{blog.video}}" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="card-footer text-muted">
+    {{blog.uploaded_time}}
+  </div>
+</div>
+<button type="button" class="btn btn-dark"><a href="/techblog">Go Back</a></button>
+</div>
+
+
+{% endfor %}
+
+{% endblock %}

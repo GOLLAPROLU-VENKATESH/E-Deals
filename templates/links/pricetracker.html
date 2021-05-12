@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load colorize %}
+
+{% block content %}
+
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form action="" method="POST" autocomplete="off">-->
+<!--          {% csrf_token %}-->
+<!--          {{form|crispy}}-->
+<!--        <button type="submit" class="btn btn-primary mt-3">Submit</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="container mt-5">
+
+  <div class="card text-center shadow-lg bg-body rounded" style="width:800">
+  <div class="card-header">
+    Track a Product
+  </div>
+  <div class="card-body">
+
+    <p class="card-text"><form action="/addproduct" method="post">
+    <label for="urlbar" class="form-label"><h3>Product Url</h3></label>
+    {% csrf_token %}
+ <center> <input type="text" class="form-control mb-2" id="urlbar" placeholder="www.ExampleEstore.com/product"
+         name="url" style="width:600px">
+   <label for="tp" class="form-label"><h3>Target Price</h3></label>
+   <input type="number" class="form-control" id="tp" placeholder="Enter Product Target Price"
+         name="tp" style="width:600px">
+ </center>
+    <button type="submit" class="btn btn-dark mt-3">Track Product</button>
+  </form></p>
+
+
+  </div>
+  <div class="card-footer text-muted">
+  Track products of : Amazon,Flipcart and Snapdeal
+  </div>
+</div>
+
+</div>
+
+    <div class="container mt-3">
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col">
+<!--            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--              Add-->
+<!--            </button>-->
+            <a href="{% url 'update' %}">
+              <button class="btn btn-outline-dark">Update</button>
+            </a>
+          </div>
+          <div class="col" style="text-align: right;">
+            <div>Total Items : {{items_no}}</div>
+            <div>Discounted Items : {{no_discounted}}</div>
+          </div>
+        </div>
+      </div>
+      {% if qs %}
+        {% for item in qs %}
+        <div class="card mt-3">
+          <div class="card-header">
+            <h5>{{item.name}}</h5>
+          </div>
+          <div class="card-body">
+            <div class="blockquote">
+              <div class="mt-2">Current price(RS): {{item.current_price}}</div>
+              <div class="mt-2">Targeted price(RS): {{item.target_price}}</div>
+              <div class="mt-2">price differcence(RS): {{item.price_diff|colorize}}</div>
+
+              <div class="mt-2"><button type="button"
+                           class="btn btn-dark"><a href="{{item.url}}" style="color:white;text-decoration: none;" target="_blank"
+              >Buy Now!!</a></button></div>
+              <a href="{% url 'delete' item.pk %}"><button class="btn btn-outline-danger mt-3">Delete</button></a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      {% else %}
+
+      {% endif %}
+    </div>
+
+{% endblock %}
+
+

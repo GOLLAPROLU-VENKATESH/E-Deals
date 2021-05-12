@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card border-dark mb-3 mt-3" style="max-width: 18rem;">
+  <div class="card-header">Failed To Register Due To:</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Failed Message:</h5>
+    <p class="card-text">{% if error %}
+                <div class="alert alert-danger" role="alert">
+                  {{error}}
+                </div>
+                {% endif %}</p>
+      <div class="card-footer bg-transparent border-dark"><a href='/' class="btn btn-primary">Go Back To Home</a></div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-md">
+<div class="row mb-3 mt-3 ">
+  {% for blog in blog %}
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-dark"><h3 class="mb-0">{{blog.heading}}</h3></strong>
+
+          <div class="mb-1 text-muted">{{blog.uploaded_time}}</div>
+          <strong><p class="card-text mb-auto">{{blog.subheading1}}</p></strong>
+          <p class="card-text mb-auto">{{blog.para1}}</p>
+          <form action="/vblog/" method="post">
+             {% csrf_token %}
+            <input type="hidden" name="bid" value="{{blog.id}}">
+            <div class="container"><button class="btn btn-primary" type="submit">Read more...</button></div>
+          </form>
+
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <image href="{{blog.img_1.url}}" height="250" width="250"/></svg>
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
