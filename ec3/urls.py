@@ -30,8 +30,6 @@ urlpatterns = [
     path('',include('price_tracker.urls')),
     path('',include('techblog.urls')),
     path('',include('compare.urls')),
-url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}),
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 urlpatterns+=staticfiles_urlpatterns()
