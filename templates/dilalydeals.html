@@ -19,14 +19,15 @@
         </div>
 
 
-
-    <div class="container-lg row mx-auto">
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for product in product %}
-        <div class="col mx-auto">
+
+        <div class="container-fluid col">
 <!--            style="width: 23rem; height:42rem;"-->
-            <div class="card border-dark  mb-3 shadow bg-body rounded">
+            <div class="card border-dark mb-3 shadow bg-body rounded">
                 <div class="card-header"><h5>{{product.name}}</h5></div>
-                <div class="card-body ">
+                <div class="card-body">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -41,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-
+<center>
                        <h6 class="card-title mt-1"><img src="{% static 'ss.png' %}" style="width:15px;height:15px;">
                            {{product.rating}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -52,12 +53,13 @@
                            {% endif %}
                        </h6>
 
-                    <center><h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
+                    <h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
 
                     <center>Category : {{product.category}}<br>
-                    Estore   : {{product.estore}}</center>
-                   Offer Starting Time: {{product.start_time}}<br>Offer Ending Time :  {{product.End_time}}
-
+                    Estore   : {{product.estore}}<br>
+                   Date : {{product.start_time | date:"F d Y" }}<br>Offer Timings :   {{product.start_time | time:"h:i A"}}
+                        to {{ product.End_time | time:"h:i A" }}
+</center>
                     <center class="mt-2"><a
                             href="{{product.product_url}}"
                             class="btn btn-dark"
@@ -75,6 +77,6 @@
 
         {% endfor %}
     </div>
-
+</div>
 
 {% endblock %}

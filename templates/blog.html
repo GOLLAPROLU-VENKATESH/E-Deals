@@ -17,7 +17,7 @@
   <div class="card-body">
       <strong><p class="card-text mb-auto">{{blog.subheading1}}</p></strong>
       <p class="card-text mb-auto">{{blog.para1}}</p>
-      <img src="{{blog.img_2.url}}" class="card-img-top" alt="..." style="height:500px; width:1000px">
+      <img src="{{blog.img_2.url}}" class="card-img-top" alt="...">
       <strong><p class="card-text mb-auto">{{blog.subheading2}}</p></strong>
       <p class="card-text mb-auto">{{blog.para2}}</p>
       <strong><p class="card-text mb-auto">{{blog.subheading3}}</p></strong>
@@ -25,7 +25,9 @@
 
 
       <div class="mt-3">
-  <center><iframe src="{{blog.video}}" title="YouTube video" allowfullscreen style="height:500px; width:1000px"></iframe></center>
+      <div class="ratio ratio-16x9">
+  <iframe src="{{blog.video}}" title="YouTube video" allowfullscreen></iframe>
+</div>
     </div>
   </div>
   <div class="card-footer text-muted">

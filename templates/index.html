@@ -101,7 +101,7 @@
     </div>
 </div>
 <div class="mx-auto">
-    <div class="row mx-auto">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for product in product|slice:":6"%}
         <div class="col mx-auto">
 <!--            style="width: 23rem; height:42rem;"-->
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-
+<center>
                        <h6 class="card-title mt-1"><img src="{% static 'ss.png' %}" style="width:15px;height:15px;">
                            {{product.rating}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -131,11 +131,13 @@
                            {% endif %}
                        </h6>
 
-                    <center><h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
+                    <h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
 
                     <center>Category : {{product.category}}<br>
-                    Estore   : {{product.estore}}</center>
-                   Offer Starting Time: {{product.start_time}}<br>Offer Ending Time :  {{product.End_time}}
+                    Estore   : {{product.estore}}<br>
+                   Date : {{product.start_time | date:"F d Y" }}<br>Offer Timings :   {{product.start_time | time:"h:i A"}}
+                        to {{ product.End_time | time:"h:i A" }}
+</center>
 
                     <center class="mt-2"><a
                             href="{{product.product_url}}"
