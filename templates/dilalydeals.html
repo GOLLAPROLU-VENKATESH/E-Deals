@@ -1,35 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="container-fluid mt-4">
-    <div class="row">
-      <div class="col-lg-2 mx-auto ">
-        <div class="list-group shadow bg-body rounded">
-        <a href="/DialyDeals/" class="list-group-item list-group-item-action-active mb-2" style="color:#212529">All
-            Categories</a>
-        {% for category in category %}
-          <a href="?category={{category.id}}" class="list-group-item list-group-item-action-active mb-2"
-             style="color:#212529">{{category.name}}</a>
-        {% endfor %}
-        </div>
-      </div>
 
-        <div class="col-lg-9 mx-auto">
-    <div class="row mx-auto">
+<div class="container-xl nav-item dropdown mt-3 mb-3">
+          <a class="nav-link " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ Filter Category
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+</svg>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+             {% for category in category %}
+              <li><a class="dropdown-item" href="?category={{category.id}}">{{category.name}}</a></li>
+                  {% endfor %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/DialyDeals/">All Category</a></li>
+          </ul>
+        </div>
+
+
+
+    <div class="container-lg row mx-auto">
         {% for product in product %}
         <div class="col mx-auto">
-            <div class="card border-dark mb-4 shadow bg-body rounded" style="width:350px;height: 690px;" >
+<!--            style="width: 23rem; height:42rem;"-->
+            <div class="card border-dark  mb-3 shadow bg-body rounded">
                 <div class="card-header"><h5>{{product.name}}</h5></div>
                 <div class="card-body ">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+                                <center>
                                 <img class="img-fluid" src="{{product.img_1.url}}" alt="Sample"
-                                     style="width:300px;height:250px;">
+                                     ></center>
                             </div>
-                            <div class="carousel-item">
-                                <img src="{{product.img_2.url}}"
-                                     style="width:300px;height:250px;">
+                            <div class="carousel-item ">
+                                <center>
+                                <img class="img-fluid" src="{{product.img_2.url}}"
+                                    ></center>
                             </div>
                         </div>
                     </div>
@@ -43,14 +51,14 @@
                            <img src="{% static 're.jpg' %}" style="width:15px;height:15px;">
                            {% endif %}
                        </h6>
-                    <hr>
+
                     <center><h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
-                    <hr>
+
                     <center>Category : {{product.category}}<br>
-                    Estore   : {{product.estore}}</center><hr>
-                   Offer Starting Time: {{product.start_time}}
-                    Offer Ending Time :  {{product.End_time}}
-                    <center class="mt-1"><a
+                    Estore   : {{product.estore}}</center>
+                   Offer Starting Time: {{product.start_time}}<br>Offer Ending Time :  {{product.End_time}}
+
+                    <center class="mt-2"><a
                             href="{{product.product_url}}"
                             class="btn btn-dark"
                             rel="noopener noreferrer"
@@ -64,10 +72,9 @@
                 </div>
             </div>
         </div>
+
         {% endfor %}
     </div>
-</div>
-    </div>
-  </div>
+
 
 {% endblock %}

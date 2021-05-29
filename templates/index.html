@@ -100,22 +100,23 @@
 
     </div>
 </div>
-<div class="container-fluid mx-auto">
+<div class="mx-auto">
     <div class="row mx-auto">
         {% for product in product|slice:":6"%}
         <div class="col mx-auto">
-            <div class="card border-dark mb-4 shadow bg-body rounded" style="width: 23rem; height:42rem;" >
+<!--            style="width: 23rem; height:42rem;"-->
+            <div class="card border-dark mb-4 shadow bg-body rounded">
                 <div class="card-header"><h5>{{product.name}}</h5></div>
                 <div class="card-body ">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="img-fluid" src="{{product.img_1.url}}" alt="Sample"
-                                     style="width:300px;height:250px;">
+                                     >
                             </div>
                             <div class="carousel-item">
-                                <img src="{{product.img_2.url}}"
-                                     style="width:300px;height:250px;">
+                                <img class="img-fluid" src="{{product.img_2.url}}"
+                                    >
                             </div>
                         </div>
                     </div>
@@ -129,11 +130,11 @@
                            <img src="{% static 're.jpg' %}" style="width:15px;height:15px;">
                            {% endif %}
                        </h6>
-                    <hr>
+
                     <center><h5>Price : (<strike>{{product.mrp}}</strike>) Rs.{{product.selling_price}}</h5></center>
 
                     <center>Category : {{product.category}}<br>
-                    Estore   : {{product.estore}}</center><hr>
+                    Estore   : {{product.estore}}</center>
                    Offer Starting Time: {{product.start_time}}<br>Offer Ending Time :  {{product.End_time}}
 
                     <center class="mt-2"><a
@@ -163,9 +164,9 @@
 
 <hr class="featurette-divider"/>
 <hr class="featurette-divider"/>
-<div class="mt-5 m-5">
+<div class="mt-5 container-lg">
 
-  <div class="card text-center shadow-lg bg-body rounded" style="width:800">
+  <div class="card text-center shadow-lg bg-body rounded">
   <div class="card-header">
       <center><h1>Track a Product</h1></center>
 
@@ -175,8 +176,9 @@
     <p class="card-text"><form action="/suggestedprices" method="post">
     <label for="urlbar" class="form-label"><h3>Product Url</h3></label>
     {% csrf_token %}
- <center> <input type="text" class="form-control mb-2" id="urlbar" placeholder="www.ExampleEstore.com/product"
-         name="url" style="width:600px">
+ <center> <div class="w-75"><input type="text" class="form-control mb-2" id="urlbar"
+                            placeholder="www.ExampleEstore.com/product"
+         name="url"></div>
  </center>
 {% if request.session.customer_id %}
     <button type="submit" class="btn btn-dark mt-3">Track Product</button>
