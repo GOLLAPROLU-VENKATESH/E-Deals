@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load colorize %}
+
+{% block content %}
+
+   <div class="container">
+      <div class="p-4 m-4">
+        <div
+          class="col-lg-5 mx-auto border rounded shadow-lg p-3 mb-5 bg-white rounded pt-4 pb-4 m-4"
+        >
+          <h3 align="center">Contact Us</h3>
+          <form class="row g-3" action="postquery" method="post">
+
+{% csrf_token %}
+            <div class="form-group mt-3">
+              <label for="">User Name</label>
+              <input
+                required
+                type="text"
+                name="name"
+                id=""
+                value=""
+                class="form-control mt-1"
+                placeholder="Enter Your Name"
+                aria-describedby="helpId"
+              />
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="example@gmail.com"
+                class="email white col-7 col-md-4 col-lg-7 ml-3 form-control mt-1"
+                id="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                required
+              />
+              <div class="valid-feedback feedback-pos">Looks good!</div>
+              <div class="invalid-feedback feedback-pos">
+                Please input valid email ID
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="">Phone Number</label>
+              <input
+                required
+                type="Phone"
+                name="phonenumber"
+                id=""
+                value=""
+                class="form-control mt-1"
+                placeholder="0123456789"
+                aria-describedby="helpId"
+                pattern="(0/91)?[6-9][0-9]{9}$"
+              />
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+
+              <div class="form-group mt-3">
+                <label for="exampleFormControlTextarea1">Query</label>
+                <textarea
+                  class="form-control mt-1"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="query"
+                ></textarea>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <button type="submit" name="submit" class="btn btn-dark">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

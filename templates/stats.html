@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if graph %}
+<div class="container-xxl mt-3 mb-3">
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats">Bar Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?esl=1">Line Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?ess=1">Scatter Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?esp=1">Pie Chart</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+      <img src="data:image/png;base64,{{ graph|safe }}">
+  </div>
+</div>
+</div>
+<div class="container mt-3 mb-3">
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats">Bar Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?cal=1">Line Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?cas=1">Scatter Plot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="/stats/?cap=1">Pie Chart</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+      <img src="data:image/png;base64,{{ graph2|safe }}">
+  </div>
+</div>
+</div>
+{% endif %}
+{% endblock %}

@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'i#b743)*jdu@*plzm8eqkk(07pvh(-_xl-u+w-zkby-cd&wcu='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -42,12 +42,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_celery_beat',
     'techblog',
-    'embed_video'
-
+    'embed_video',
+    'compare'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,8 +134,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER='venkateshvenky5408@gmail.com'
-EMAIL_HOST_PASSWORD='Venky@150102#'
+EMAIL_HOST_USER='noreplay.edeals@gmail.com'
+EMAIL_HOST_PASSWORD='E-DealsWeb'
 
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
@@ -142,3 +143,15 @@ CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER='json'
 CELERY_TASK_SELERLIZER='json'
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'e_deals',
+#         'HOST':'localhost',
+#         'PORT':3306,
+#         'USER':'root',
+#         'PASSWORD':'root'
+#     }
+# }

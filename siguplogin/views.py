@@ -4,8 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.views import View
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.template.loader import render_to_string
-
+from django.template.loader import render_to_string, get_template
 
 class Signup(View):
     def validatecustomer(self, customer):
@@ -72,20 +71,17 @@ class Signup(View):
             customer.password = make_password(customer.password)
             customer.register()
             #sendig email
+            ctx = {
+                'user_name': user_name
+            }
+            message = get_template('signupmail.html').render(ctx)
             email=EmailMessage(
                 'Welcome to E-Deals! 😀 ',
-                f'Hello {user_name} ,'
-                f''
-                f'        We would like to congratulate you for successful registration!!!'
-                f'/nEnjoy our service : '
-                f'           1. Get dialy offers '
-                f'           2. Track price of a Product'
-                f'           3. Dialy Tech News'
-                f''
-                f'Thank you For Registration 😍 ',
+                message,
                 settings.EMAIL_HOST_USER,
                 [email],
             )
+            email.content_subtype = "html"
             email.fail_silently=False
             email.send()
             return redirect('/?success=1')
@@ -124,7 +120,6 @@ class Login(View):
         else:
             error_message = "Email Or Password Incorrect!!"
         return render(request, 'index.html', {'error': error_message})
-
 
 def logout(request):
     request.session.clear()

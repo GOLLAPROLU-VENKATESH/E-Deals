@@ -17,6 +17,10 @@ class Link(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     nemail =models.BooleanField(default=False)
     customer =models.CharField(max_length=50, default='')
+    min_target = models.FloatField(default=0)
+    max_target = models.FloatField(default=0)
+
+
 
     def __str__(self):
         return str(self.name)

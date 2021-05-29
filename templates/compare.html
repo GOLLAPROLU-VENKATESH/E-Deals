@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-3 mb-3" xmlns="http://www.w3.org/1999/html">
+    <div class="card text-center">
+  <div class="card-header">
+    <h3>Compare Two Products</h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">
+      <form action="/getdetails" method="post">
+    {% csrf_token %}
+        <div class="card-group">
+  <div class="card">
+
+    <div class="card-body">
+      <h5 class="card-title">Amazon Product</h5>
+
+    <center>
+
+   <input type="text" class="form-control"  placeholder="Enter Product Url"
+         name="aurl" style="width:600px" value="{{url}}">
+ </center>
+        {% if name %}
+        <h5 class="mt-2">{{name}}</h5>
+        <br>
+        <h5>{{price}}</h5>
+        <br>
+<table>
+      {% for l in ls %}
+    <tr>
+        <td>
+            {{l}}
+        </td>
+    </tr>
+{% endfor %}
+
+</table>
+
+        {% endif %}
+    </div>
+  </div>
+      <br>
+      &nbsp;&nbsp;
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Flipcart Product</h5>
+
+    <center>
+
+   <input type="text" class="form-control" id="tp" placeholder="Enter Product Url"
+         name="furl" style="width:600px" value="{{url2}}">
+ </center>
+        {% if name2 %}
+       <h5 class="mt-2">{{name2}}</h5>
+        <br>
+        <h5>{{price2}}</h5>
+        <br>
+       <table>
+      {% for l2 in ls2 %}
+    <tr>
+        <td>
+            {{l2}}
+        </td>
+    </tr>
+{% endfor %}
+
+</table>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+          <button type="submit" class="btn btn-dark mt-3">Get Details</button>
+  </form>
+      </p>
+      <div class="row g-0">
+          <div class="col-sm-6">
+              <a href="{{url}}" target="_blank"><button type="submit" class="btn btn-dark">Go to Amazon Website</button></a>
+          </div>
+          <div class="col-sm-6">
+               <a href="{{url2}}" target="_blank"> <button type="submit" class="btn btn-dark">Go to flipkart Website</button></a>
+          </div>
+      </div>
+      <div class="row g-0">
+          <div class="col-sm-6">
+              <form action="/suggestedprices" method="post">
+    {% csrf_token %}
+     <input type="text" class="form-control mb-2" id="urlba" placeholder="www.ExampleEstore.com/product" name="url"
+            style="width:600px" value="{{url}}" hidden>
+      <button type="submit" class="btn btn-dark mt-1 mb-1">Track Product</button>
+  </form>
+          </div>
+          <div class="col-sm-6">
+              <form action="/suggestedprices" method="post">
+    {% csrf_token %}
+     <input type="text" class="form-control mb-2" placeholder="www.ExampleEstore.com/product" name="url"
+            style="width:600px" value="{{url2}}" hidden>
+      <button type="submit" class="btn btn-dark mt-1 mb-1">Track Product</button>
+  </form>
+
+          </div>
+      </div>
+
+
+
+
+
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

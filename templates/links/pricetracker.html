@@ -31,17 +31,40 @@
   </div>
   <div class="card-body">
 
-    <p class="card-text"><form action="/addproduct" method="post">
-    <label for="urlbar" class="form-label"><h3>Product Url</h3></label>
+      {% if for %}
+       <p class="card-text">
+      <form action="/addproduct" method="post">
+    <label for="urlba" class="form-label"><h3>Suggested Prices</h3></label><br>
+Name:{{name}}
+      <br>
+      Current Price: {{current_price}}
+      <br>
+      Suggested Price Range for Target Price: {{max_target}} - {{min_target}}
+      <br>
     {% csrf_token %}
- <center> <input type="text" class="form-control mb-2" id="urlbar" placeholder="www.ExampleEstore.com/product"
-         name="url" style="width:600px">
-   <label for="tp" class="form-label"><h3>Target Price</h3></label>
+    <center>
+     <input type="text" class="form-control mb-2" id="urlba" placeholder="www.ExampleEstore.com/product" name="url"
+            style="width:600px" value="{{url}}" hidden>
+    <label for="tp" class="form-label"><h3>Target Price</h3></label>
    <input type="number" class="form-control" id="tp" placeholder="Enter Product Target Price"
          name="tp" style="width:600px">
  </center>
     <button type="submit" class="btn btn-dark mt-3">Track Product</button>
   </form></p>
+      {% else %}
+       <p class="card-text">
+      <form action="/suggestedprices" method="post">
+    <label for="urlbar" class="form-label"><h3>Product Url</h3></label>
+    {% csrf_token %}
+     <center>
+     <input type="text" class="form-control mb-2" id="urlbar" placeholder="www.ExampleEstore.com/product" name="url"
+            style="width:600px">
+      </center>
+      <button type="submit" class="btn btn-dark mt-1 mb-1">Get Suggested Price</button>
+  </form>
+      </p>
+      {% endif%}
+
 
 
   </div>

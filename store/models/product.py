@@ -36,6 +36,10 @@ class Product(models.Model):
     @staticmethod
     def get_all_categories_by_id(category_id):
         if category_id:
+            cap = Category.get_category_by_object(category_id)
+            for o in cap:
+                o.count = o.count + 1
+                o.save()
             return Product.objects.filter(category_id=category_id)
         else:
             return Product.get_all_products()
@@ -43,6 +47,10 @@ class Product(models.Model):
     @staticmethod
     def get_all_products_by_estore_id(estore_id):
         if estore_id:
+            esp=Estore.get_estore_by_object(estore_id)
+            for o in esp:
+                o.count=o.count+1
+                o.save()
             return Product.objects.filter(estore_id=estore_id)
         else:
             return Product.get_all_products()

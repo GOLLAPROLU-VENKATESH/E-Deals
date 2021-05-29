@@ -46,9 +46,15 @@ def get_link_data(url):
                 newprice = float(newprice)
                 error = 0
             except AttributeError:
-                name = soup.find(class_='pdp-e-i-head').getText()
-                name = name.strip()
-                price = soup.find(class_='payBlkBig').getText()
-                newprice = float(price)
-                error=0
+                try:
+                    name = soup.find(class_='pdp-e-i-head').getText()
+                    name = name.strip()
+                    price = soup.find(class_='payBlkBig').getText()
+                    newprice = float(price)
+                    error=0
+                except:
+                    error=1
+                    name=" "
+                    newprice=0
+                    pass
     return name,newprice,error

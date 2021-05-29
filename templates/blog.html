@@ -7,7 +7,7 @@
 
 
 
-<div class="container-md mx-auto mt-3">
+<div class="container-md mx-auto mt-3 shadow mt-3 bg-body rounded">
 
 
     <div class="card text-center">
@@ -17,20 +17,22 @@
   <div class="card-body">
       <strong><p class="card-text mb-auto">{{blog.subheading1}}</p></strong>
       <p class="card-text mb-auto">{{blog.para1}}</p>
-      <img src="{{blog.img_2.url}}" class="card-img-top" alt="..." >
+      <img src="{{blog.img_2.url}}" class="card-img-top" alt="..." style="height:500px; width:1000px">
       <strong><p class="card-text mb-auto">{{blog.subheading2}}</p></strong>
       <p class="card-text mb-auto">{{blog.para2}}</p>
       <strong><p class="card-text mb-auto">{{blog.subheading3}}</p></strong>
       <p class="card-text mb-auto">{{blog.para3}}</p>
 
 
-<iframe width="1000" height="600" src="{{blog.video}}" frameborder="0" allowfullscreen></iframe>
+      <div class="mt-3">
+  <center><iframe src="{{blog.video}}" title="YouTube video" allowfullscreen style="height:500px; width:1000px"></iframe></center>
+    </div>
   </div>
   <div class="card-footer text-muted">
     {{blog.uploaded_time}}
   </div>
 </div>
-<button type="button" class="btn btn-dark"><a href="/techblog">Go Back</a></button>
+<center><a href="/techblog"><button type="button" class="btn btn-dark mt-3 mb-3">Go Back</button></a></center>
 </div>
 
 

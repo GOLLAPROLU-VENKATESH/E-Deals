@@ -4,6 +4,10 @@ from .models import Customer
 
 
 class AdminCustomer(admin.ModelAdmin):
-    list_display = ['user_name','phone_number','email']
+    list_display = ['user_name', 'phone_number', 'email']
+
+
+
 
 admin.site.register(Customer, AdminCustomer)
+
