@@ -19,6 +19,7 @@ Django==3.1.5
 django-celery-beat==2.2.0
 django-crispy-forms==1.10.0
 django-embed-video==1.4.0
+django-heroku==0.3.1
 django-timezone-field==4.1.2
 dnspython==1.16.0
 eventlet==0.31.0
@@ -38,6 +39,7 @@ numpy==1.20.3
 pandas==1.2.4
 Pillow==8.1.0
 prompt-toolkit==3.0.18
+psycopg2==2.8.6
 pylint==2.6.0
 pylint-django==2.4.2
 pylint-plugin-utils==0.6
