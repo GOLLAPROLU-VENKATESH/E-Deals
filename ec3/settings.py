@@ -27,7 +27,7 @@ SECRET_KEY = 'i#b743)*jdu@*plzm8eqkk(07pvh(-_xl-u+w-zkby-cd&wcu='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','e-deals-project.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'e-deals-project.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-# 'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,7 +92,6 @@ DATABASES = {
 
 import dj_database_url
 
-
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
@@ -131,29 +130,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=(
-    os.path.join(BASE_DIR,'assets'),
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
 )
 
 MEDIA_URL = "/image/product/"
 MEDIA_ROOT = os.path.join(BASE_DIR)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER='noreplay.edeals@gmail.com'
-EMAIL_HOST_PASSWORD='E-DealsWeb'
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'noreplay.edeals@gmail.com'
+EMAIL_HOST_PASSWORD = 'E-DealsWeb'
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER='json'
-CELERY_TASK_SELERLIZER='json'
-
-
-
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SELERLIZER = 'json'
 
 # DATABASES = {
 #     'default': {
