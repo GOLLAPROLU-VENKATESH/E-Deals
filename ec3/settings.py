@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import cloudinary
+import cloudinary_storage
 from pathlib import Path
 import os
 import django_heroku,dj_database_url
@@ -26,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'i#b743)*jdu@*plzm8eqkk(07pvh(-_xl-u+w-zkby-cd&wcu='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'e-deals-project.herokuapp.com', 'localhost']
 
@@ -46,7 +47,9 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'techblog',
     'embed_video',
-    'compare'
+    'compare',
+'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +140,16 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = "/image/product/"
 MEDIA_ROOT = os.path.join(BASE_DIR)
+
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "dny6l7x8j",
+    'API_KEY':'268341291776779',
+    'API_SECRET':'nJHq7NKRpFgLK4arXkHF_ckD080',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
